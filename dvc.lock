@@ -1,0 +1,115 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/nmt/component/s1_data_ingestion.py
+    deps:
+    - path: src/nmt/component/s1_data_ingestion.py
+      hash: md5
+      md5: 0dc5169a9f1c31b511708aaaba55e595
+      size: 2423
+    outs:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 6d174d7c67baf16daa2bdc79bfc7b358.dir
+      size: 775265
+      nfiles: 1
+  data_validation:
+    cmd: python src/nmt/component/s2_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 6d174d7c67baf16daa2bdc79bfc7b358.dir
+      size: 775265
+      nfiles: 1
+    - path: src/nmt/component/s2_data_validation.py
+      hash: md5
+      md5: c65d30c9d46e0082e9a361b39d1db13e
+      size: 2796
+  data_preprocessing:
+    cmd: python src/nmt/component/s3_data_preprocessing.py
+    deps:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 6d174d7c67baf16daa2bdc79bfc7b358.dir
+      size: 775265
+      nfiles: 1
+    - path: src/nmt/component/s3_data_preprocessing.py
+      hash: md5
+      md5: ba517e6b56ef577be8899ba4aae4bd4e
+      size: 5725
+    outs:
+    - path: artifacts/data_preprocessing
+      hash: md5
+      md5: 84361377e0177ac5e8279f99278567d2.dir
+      size: 6614040
+      nfiles: 8
+  data_transformation:
+    cmd: python src/nmt/component/s4_data_transformation.py
+    deps:
+    - path: artifacts/data_preprocessing
+      hash: md5
+      md5: 84361377e0177ac5e8279f99278567d2.dir
+      size: 6614040
+      nfiles: 8
+    - path: src/nmt/component/s4_data_transformation.py
+      hash: md5
+      md5: 2ce87c01d083836dcae2c49966bd4d0b
+      size: 4514
+    outs:
+    - path: artifacts/data_transformation
+      hash: md5
+      md5: e175e2c59413ff6a9db9d9f498c08cba.dir
+      size: 3514002
+      nfiles: 4
+  model:
+    cmd: python src/nmt/component/model.py
+    deps:
+    - path: artifacts/data_transformation
+      hash: md5
+      md5: e175e2c59413ff6a9db9d9f498c08cba.dir
+      size: 3514002
+      nfiles: 4
+    - path: src/nmt/component/model.py
+      hash: md5
+      md5: 9290bb9d4ceddc2b98ca7f1ddf8d4694
+      size: 6160
+  model_training:
+    cmd: python src/nmt/component/s5_model_training.py
+    deps:
+    - path: artifacts/data_transformation
+      hash: md5
+      md5: e175e2c59413ff6a9db9d9f498c08cba.dir
+      size: 3514002
+      nfiles: 4
+    - path: src/nmt/component/model.py
+      hash: md5
+      md5: 9290bb9d4ceddc2b98ca7f1ddf8d4694
+      size: 6160
+    - path: src/nmt/component/s5_model_training.py
+      hash: md5
+      md5: 05730a015455c7e5e3b56b0ba2145b38
+      size: 4699
+    outs:
+    - path: artifacts/model
+      hash: md5
+      md5: b29f505355224dab1ed9497a49bba2ef.dir
+      size: 286091406
+      nfiles: 1
+  model_evaluation:
+    cmd: python src/nmt/component/s6_model_evaluation.py
+    deps:
+    - path: artifacts/model
+      hash: md5
+      md5: b29f505355224dab1ed9497a49bba2ef.dir
+      size: 286091406
+      nfiles: 1
+    - path: src/nmt/component/s6_model_evaluation.py
+      hash: md5
+      md5: 695fc0ad1a2813cfc258125cb2dd4950
+      size: 7852
+    outs:
+    - path: artifacts/evaluation
+      hash: md5
+      md5: 575a251d24d32804301b7611fe29c922.dir
+      size: 46
+      nfiles: 1
