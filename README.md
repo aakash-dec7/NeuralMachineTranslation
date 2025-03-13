@@ -76,26 +76,58 @@ Model(
   (positional_encoding): PositionalEncoding()
   (encoder_layers): ModuleList(
     (0-1): 2 x EncoderLayer(
-      (attention): MultiheadAttention(...)
-      (ffnn): FeedForward(...)
-      (norm1): LayerNorm(...)
-      (norm2): LayerNorm(...)
-      (dropout): Dropout(...)
+      (attention): MultiheadAttention(
+        (w_q): Linear(in_features=512, out_features=512, bias=False)
+        (w_k): Linear(in_features=512, out_features=512, bias=False)
+        (w_v): Linear(in_features=512, out_features=512, bias=False)
+        (w_o): Linear(in_features=512, out_features=512, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (ffnn): FeedForward(
+        (net): Sequential(
+          (0): Linear(in_features=512, out_features=1024, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.2, inplace=False)
+          (3): Linear(in_features=1024, out_features=512, bias=True)
+        )
+      )
+      (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.2, inplace=False)
     )
   )
   (decoder_layers): ModuleList(
     (0-1): 2 x DecoderLayer(
-      (self_attention): MultiheadAttention(...)
-      (cross_attention): MultiheadAttention(...)
-      (ffnn): FeedForward(...)
-      (norm1): LayerNorm(...)
-      (norm2): LayerNorm(...)
-      (norm3): LayerNorm(...)
-      (dropout): Dropout(...)
+      (self_attention): MultiheadAttention(
+        (w_q): Linear(in_features=512, out_features=512, bias=False)
+        (w_k): Linear(in_features=512, out_features=512, bias=False)
+        (w_v): Linear(in_features=512, out_features=512, bias=False)
+        (w_o): Linear(in_features=512, out_features=512, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (cross_attention): MultiheadAttention(
+        (w_q): Linear(in_features=512, out_features=512, bias=False)
+        (w_k): Linear(in_features=512, out_features=512, bias=False)
+        (w_v): Linear(in_features=512, out_features=512, bias=False)
+        (w_o): Linear(in_features=512, out_features=512, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (ffnn): FeedForward(
+        (net): Sequential(
+          (0): Linear(in_features=512, out_features=1024, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.2, inplace=False)
+          (3): Linear(in_features=1024, out_features=512, bias=True)
+        )
+      )
+      (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (norm3): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.2, inplace=False)
     )
   )
   (fc_out): Linear(in_features=512, out_features=59515, bias=True)
-  (dropout): Dropout(...)
+  (dropout): Dropout(p=0.2, inplace=False)
 )
 ```
 
