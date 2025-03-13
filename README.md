@@ -29,14 +29,14 @@ Ensure the following dependencies and services are installed and configured:
 
 **Description**:
 
-The dataset consists of two columns:
+The dataset consists of:
 
 - **English Sentences**
 - **French Translations**
 
 ## Model Architecture
 
-The **NeuralMachineTranslation** model consists of the following components:
+The **Neural Machine Translation** model consists of the following components:
 
 ### 1. Positional Encoding
 
@@ -172,13 +172,17 @@ dvc init
 dvc repro
 ```
 
-The trained model is saved in `artifacts/model/model.pth`.
+The trained model will be saved in:
+
+```sh
+artifacts/model/model.pth
+```
 
 ## Deployment
 
 ### Create an ECR Repository
 
-Create an Amazon ECR repository with the specified name in `setup.py`:
+Ensure that the Amazon ECR repository exists with the appropriate name as specified in `setup.py`:
 
 ```python
 setup(
@@ -192,7 +196,7 @@ setup(
 
 ### Create an EKS Cluster
 
-Use the following command to create an Amazon EKS cluster:
+Execute the following command to create an Amazon EKS cluster:
 
 ```sh
 eksctl create cluster --name <cluster-name> \
@@ -207,7 +211,7 @@ eksctl create cluster --name <cluster-name> \
 
 ### Push Code to GitHub
 
-Before pushing the code, add necessary GitHub Actions secrets under **Settings > Secrets and Variables > Actions**:
+Before pushing the code, ensure that the necessary GitHub Actions secrets are added under **Settings > Secrets and Variables > Actions**:
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
@@ -224,7 +228,7 @@ git push origin main
 
 ### CI/CD Automation
 
-GitHub Actions automates CI/CD processes, ensuring the model is built, tested, and deployed on EKS.
+GitHub Actions will automate the CI/CD process, ensuring that the model is built, tested, and deployed to **Amazon EKS**.
 
 ## Accessing the Deployed Application
 
@@ -245,7 +249,7 @@ Copy the `EXTERNAL-IP` and append `:5000` to access the application:
 http://<EXTERNAL-IP>:5000
 ```
 
-The NeuralMachineTranslation application is now deployed and accessible online.
+The Neural Machine Translation application is now deployed and accessible online.
 
 ## License
 
