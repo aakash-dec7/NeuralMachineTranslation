@@ -245,4 +245,8 @@ Copy the `EXTERNAL-IP` and append `:5000` to access the application:
 http://<EXTERNAL-IP>:5000
 ```
 
-The English-to-French translation application is now deployed and accessible online.
+The NeuralMachineTranslation application is now deployed and accessible online.
+
+## License
+
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
