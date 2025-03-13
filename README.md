@@ -36,40 +36,40 @@ The dataset consists of two columns:
 
 ## Model Architecture
 
-The NeuralMachineTranslation model consists of the following components:
+The **NeuralMachineTranslation** model consists of the following components:
 
 ### 1. Positional Encoding
 
-- Since Transformers lack recurrence mechanisms, positional encodings are added to retain order information.
-- Uses sine and cosine functions for unique position encodings.
+- Since Transformers lack recurrence mechanisms, **positional encodings** are added to retain order information.
+- Uses `sine` and `cosine` functions for unique position encodings.
 
 ### 2. Multi-Head Attention
 
-- Implements self-attention and cross-attention mechanisms.
-- Splits the input into multiple attention heads for better feature representation.
-- Uses scaled dot-product attention to compute attention scores.
+- Implements `self-attention` and `cross-attention` mechanisms.
+- Splits the input into multiple **attention heads** for better feature representation.
+- Uses **scaled dot-product attention** to compute `attention scores`.
 
 ### 3. Feed-Forward Network (FFN)
 
-- Applies two linear transformations with a ReLU activation.
+- Applies two **linear transformations** with a `ReLU` activation.
 - Enhances model expressiveness.
 
 ### 4. Encoder Layer
 
-- Contains a multi-head self-attention mechanism.
-- Followed by a position-wise feed-forward network.
-- Uses layer normalization after each sub-layer.
+- Contains a **multi-head self-attention** mechanism.
+- Followed by a **position-wise feed-forward network**.
+- Uses `layer normalization` after each sub-layer.
 
 ### 5. Decoder Layer
 
-- Similar to the encoder but includes an additional multi-head cross-attention mechanism.
-- Attends to the encoder's output while processing the target sequence.
-- Uses masked self-attention to prevent future token leakage.
+- Similar to the encoder but includes an additional **multi-head cross-attention mechanism**.
+- Attends to the **encoder's output** while processing the **target sequence**.
+- Uses masked `self-attention` to prevent future token leakage.
 
 ### 6. Transformer Model
 
-- Stacks multiple encoder and decoder layers.
-- Uses embedding layers for input representation.
+- Stacks multiple **encoder** and **decoder** layers.
+- Uses `embedding` layers for input representation.
 - Outputs token probabilities for translation.
 
 #### Model Summary
