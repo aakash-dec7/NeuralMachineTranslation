@@ -136,8 +136,8 @@ Model(
 Clone the repository:
 
 ```sh
-git clone https://github.com/aakash-dec7/SequenceToSequence.git
-cd SequenceToSequence
+git clone https://github.com/aakash-dec7/NeuralMachineTranslation.git
+cd NeuralMachineTranslation
 ```
 
 ### Install Dependencies
@@ -178,7 +178,7 @@ Create an Amazon ECR repository with the specified name in `setup.py`:
 
 ```python
 setup(
-    name="seq2seq",
+    name="nmt",
     version="1.0.0",
     author="Aakash Singh",
     author_email="aakash.dec7@gmail.com",
