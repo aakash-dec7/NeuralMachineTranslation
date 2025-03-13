@@ -1,16 +1,16 @@
 # Neural Machine Translation
 
-This repository contains a Transformer-based Neural Machine Translation (NMT) model implemented in PyTorch. The model follows the original Transformer architecture introduced by Vaswani et al. in *Attention is All You Need*. This implementation includes essential components such as multi-head attention, positional encoding, and feed-forward networks.
+This repository contains a **Transformer-based Neural Machine Translation** (NMT) model implemented in `PyTorch`. The model follows the original Transformer architecture introduced by Vaswani et al. in *Attention is All You Need*. This implementation includes essential components such as multi-head attention, positional encoding, and feed-forward networks.
 
 ## Features
 
-- **PyTorch Implementation**: Fully implemented using PyTorch.
-- **Data Version Control (DVC)**: Manages training and evaluation pipelines efficiently.
-- **Marian Tokenizer**: Uses the `Helsinki-NLP/opus-mt-en-fr` tokenizer for robust text processing.
-- **Experiment Tracking & Model Management**: Integrated with MLflow and DagsHub.
-- **Containerized Deployment**: Docker images stored in Amazon Elastic Container Registry (ECR).
-- **Scalable Deployment**: Model deployed on Amazon Elastic Kubernetes Service (EKS).
-- **Automated CI/CD**: End-to-end deployment automation using AWS and GitHub Actions.
+**PyTorch Implementation**: Fully built using `PyTorch` for efficient deep learning workflows.
+**Data Version Control (DVC)**: Manages training and evaluation pipelines effectively.
+**Marian Tokenizer**: Uses `Helsinki-NLP/opus-mt-en-fr` for robust and efficient text processing.
+**Experiment Tracking & Model Management**: Integrated with `MLflow` and `DagsHub` for seamless tracking.
+**Containerized Deployment**: Docker images stored in `Amazon Elastic Container Registry (ECR)`.
+**Scalable Deployment**: Model deployed on `Amazon Elastic Kubernetes Service (EKS)` for production readiness.
+**Automated CI/CD**: End-to-end deployment automation using AWS and GitHub Actions.
 
 ## Prerequisites
 
@@ -21,18 +21,22 @@ Ensure the following dependencies and services are installed and configured:
 - AWS CLI
 - Docker Desktop (for local testing)
 - DagsHub Account (for experiment tracking)
-- Git
+- Git & GitHub (for version control)
 
 ## Dataset
 
-- **Source**: [Language Translation (English-French)](https://www.kaggle.com/datasets/devicharith/language-translation-englishfrench)
-- **Description**: The dataset consists of two columns:
-  - **English Sentences**
-  - **French Translations**
+**Source**: [Language Translation (English-French)](https://www.kaggle.com/datasets/devicharith/language-translation-englishfrench)
+
+**Description**:
+
+The dataset consists of two columns:
+
+- **English Sentences**
+- **French Translations**
 
 ## Model Architecture
 
-The model is a sequence-to-sequence Transformer with an encoder-decoder structure. Key components include:
+The NeuralMachineTranslation model consists of the following components:
 
 ### 1. Positional Encoding
 
@@ -241,4 +245,4 @@ Copy the `EXTERNAL-IP` and append `:5000` to access the application:
 http://<EXTERNAL-IP>:5000
 ```
 
-Your English-to-French translation application is now deployed and accessible online.
+The English-to-French translation application is now deployed and accessible online.
